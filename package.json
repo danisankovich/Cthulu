@@ -1,5 +1,6 @@
 {
   "name": "Cthulhu",
+  "author": "Michael Sankovich; github.com/mikesankovich",
   "version": "0.0.0",
   "private": true,
   "scripts": {
