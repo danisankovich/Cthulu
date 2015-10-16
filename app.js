@@ -42,6 +42,14 @@ passport.deserializeUser(User.deserializeUser());
 
 mongoose.connect('mongodb://localhost/cthulu');
 
+var logout = function(req, res){
+  if (req.isAuthenticated()){
+    req.logout();
+  }
+  res.redirect('/');
+};
+app.get('/logout', logout);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
