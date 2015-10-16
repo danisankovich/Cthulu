@@ -1,13 +1,16 @@
 Cthulu: a MEAN stack Single Page template
 MongoDb, AngularJs, ExpressJs, Node.js, PassportJs, Mongoose, Zurb Foundation, Gulp, SASS, Angular ui-router, ejs, SweetAlerts
 
+clone the repo
+> git clone git@github.com:mikesankovich/Cthulu.git
+
 to launch a server on port 3000
 >nodemon
 or
 >npm start
 ---------------------------
-to install nodemon
-> npm install -g nodemon
+to install nodemon         |
+> npm install -g nodemon   |
 ---------------------------
 
 to compile SCSS into CSS, open a second tab in terminal and
@@ -16,8 +19,8 @@ to compile SCSS into CSS, open a second tab in terminal and
 gulp will watch for changes in the SCSS file and compile as you build
 
 ---------------------------
-to install gulp
-> npm install -g gulp
+to install gulp            |
+> npm install -g gulp      |
 ---------------------------
 
 Foundation Docs: http://foundation.zurb.com/docs/
