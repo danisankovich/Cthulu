@@ -1,5 +1,5 @@
 Cthulu: a MEAN stack Single Page template
-MongoDb, AngularJs, ExpressJs, Node.js, PassportJs, Mongoose, Zurb Foundation, Gulp, SCSS, Angular ui-router, ejs, SweetAlerts
+MongoDb, AngularJs, ExpressJs, Node.js, PassportJs, Mongoose, Zurb Foundation, Gulp, SASS, Angular ui-router, ejs, SweetAlerts
 
 to launch a server on port 3000
 >nodemon
@@ -19,3 +19,17 @@ gulp will watch for changes in the SCSS file and compile as you build
 to install gulp
 > npm install -g gulp
 ---------------------------
+
+Foundation Docs: http://foundation.zurb.com/docs/
+SweetAlert Docs: http://oitozero.github.io/ngSweetAlert/#/home
+ui-router Docs: https://github.com/angular-ui/ui-router
+SASS basics: http://sass-lang.com/guide
+
+
+directory paths:
+Express routes: /routes/*.js
+Template: views/index.ejs
+Controller and state configuration: /public/javascripts/script.js
+States: /public/views/*.ejs
+SASS: /public/stylesheets/style.scss
+mongoose schemas: /models/*.js

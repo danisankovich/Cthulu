@@ -4,7 +4,6 @@ var passport = require('passport');
 var logout = require('express-passport-logout');
 var User = require('../models/user');
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { user: req.user });
   res.send();
@@ -22,7 +21,7 @@ router.get('/user', function(req, res, next) {
 });
 
 router.get('/register', function(req, res) {
-  res.send('this');
+
 });
 
 router.post('/register', function(req, res) {
@@ -39,14 +38,11 @@ router.post('/register', function(req, res) {
 });
 
 router.get('/login', function(req, res) {
-  // res.render('login', {user: req.user});
+
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
   res.redirect('/');
 });
 
-router.get('/ping', function(req, res) {
-  res.status(200).send("ping!");
-});
 module.exports = router;
