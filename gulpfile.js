@@ -1,8 +1,6 @@
 var gulp = require('gulp');
 var del = require('del');
-// var run = require('gulp-run');
 var concat = require("gulp-concat");
-// var addsrc = require('gulp-add-src');
 var uglify = require('gulp-uglify');
 var sass = require('gulp-ruby-sass');
 var autoprefixer = require('gulp-autoprefixer');
@@ -30,7 +28,7 @@ gulp.task('reload', function(){
 });
 
 gulp.task('js', function() {
-  gulp.src("public/javascripts/script.js")
+  gulp.src(["public/javascripts/config.js", "public/javascripts/controllers/mainCtrl.js", "public/javascripts/services/service.js"])
   .pipe(concat("bundle.js"))
   .pipe(uglify({mangle: false}))
   .pipe(gulp.dest("public/dist/"));
