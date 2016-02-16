@@ -9,50 +9,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-app="Cthulu">
-
-  <nav class="top-bar" data-topbar role="navigation">
+  <nav class="top-bar" data-topbar role="navigation" ng-controller="mainCtrl">
     <ul class="title-area">
       <li class="name">
-        <h1><a ui-sref="/" class="navbar-brand" href="#">Cthulu</a></h1>
+        <h1><a ui-sref="/" class="navbar-brand" href="#">CTHULU</a></h1>
       </li>
       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
 
     <section class="top-bar-section">
       <ul class="nav navbar-nav navbar-right right">
-        <% if (user) { %>
-          <li><a ui-sref="#">Link 1</a></li>
-          <li><a ui-sref="#">Link 2</a></li>
-          <li><a ui-sref="home">Home</a></li>
-        <% } else { %>
-          <% } %>
-          <% if (user) { %>
-            <li>{{currentUser}}</li>
-            <li><a href='/logout'>Logout <span class="glyphicon glyphicon-log-in"></span></a></li>
-            <% } else { %>
-              <li><a ui-sref="login">Login</a></li>
-              <li><a ui-sref="register">Register</a></li>
-            <% } %>
-        </ul>
+        <li ng-show="currentUser"><a ui-sref="state1">state1</a></li>
+        <li ng-show="currentUser"><a ui-sref="state2">state2</a></li>
+        <li ng-show="currentUser"><a ui-sref="state3">state3</a></li>
+        <li ng-show="currentUser"><a href='/logout'>Logout <span class="glyphicon glyphicon-log-in"></span></a></li>
+        <li ng-hide="currentUser"><a data-reveal-id="loginModal">Login/Register</a></li>
+      </ul>
+      <div id="loginModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
 
-            </section>
-          </nav>
+        <div class="container">
+          <div class="row">
+            <div class="columns small-12">
+              <div class="columns small-6">
+                <form role="form" ng-submit="login(user)" class="loginForm">
+                  <fieldset class="thoseForms">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <legend>Log In<span class="loginError" ng-if="loginMessage">: {{loginMessage}}</span></legend>
+                    </div>
+                    <div class="form-group">
+                      <label for="username" class="col-lg-2 col-lg-offset-1 control-label">Username</label>
+                      <div class="col-lg-7">
+                        <input type="text" id="username" name="username" placeholder="Enter Username" ng-model="user.username" class="form-control"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="password" class="col-lg-2 col-lg-offset-1 control-label">Password</label>
+                      <div class="col-lg-7">
+                        <input type="password" id="password" name="password" placeholder="Enter Password" ng-model="user.password" class="form-control"/>
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-lg-4 col-lg-offset-8" style="margin-top: 95px">
+                      <p class="error">{{error}}</p>
+                      <button type="submit" class="button round small success">Login</button>&nbsp;
+                      <a ng-click="closeLogin()"><button type="button" class="button round small alert">Cancel</button></a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+              <div class="columns small-6">
+                <form role="form" ng-submit="register(newUser)" class="loginForm">
+                  <fieldset class="thoseForms">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <legend>Registration</legend>
+                    </div>
+                    <div class="form-group">
+                      <label for="username" class="col-lg-2 col-lg-offset-1 control-label">Username</label>
+                      <div class="col-lg-7">
+                        <input type="text" id="username" name="username" placeholder="Enter Username" ng-model="newUser.username" class="form-control"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="email" class="col-lg-2 col-lg-offset-1 control-label">Email</label>
+                      <div class="col-lg-7">
+                        <input type="email" name="email" placeholder="Enter Email" id="email" ng-model="newUser.email" class="form-control"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="password" class="col-lg-2 col-lg-offset-1 control-label">Password</label>
+                      <div class="col-lg-7">
+                        <input type="password" name="password" placeholder="Password" id="password" ng-model="newUser.password" class="form-control"/>
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-lg-4 col-lg-offset-8">
+                      <p class="error">{{error}}</p>
+                      <button type="submit" class="button round small success">Register</button>&nbsp;
+                      <a ng-click="closeLogin()"><button type="button" class="button round small alert">Cancel</button></a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+      </div>
+    </section>
+  </nav>
 
-          <div ui-view></div>
+  <div ui-view></div>
 
-          <hr>
-          <footer>
-            <h6>Template by Michael Sankovich:</h6>
-            <h6>Github: github.com/mikesankovich</h6>
-            <h6>website: michaelsankovich.com</h6>
-          </footer>
-        </body>
-        <script src="/javascripts/js/vendor/jquery.js"></script>
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-        <script src="/javascripts/js/vendor/modernizr.js"></script>
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="/stylesheets/sweetalert-master/dist/sweetalert.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
-        <script src="/dist/bundle.js"></script>
-        </html>
+  <hr>
+  <footer>
+    <h6>Template by Michael Sankovich:</h6>
+    <h6>Github: github.com/mikesankovich</h6>
+    <h6>website: michaelsankovich.com</h6>
+  </footer>
+</body>
+<script src="/javascripts/js/vendor/jquery.js"></script>
+<script src="/javascripts/js/vendor/modernizr.js"></script>
+<script src="/javascripts/js/foundation.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="/stylesheets/sweetalert-master/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+<script>$(document).foundation();</script>
+<script src="/dist/bundle.js"></script>
+</html>

@@ -20,29 +20,12 @@ router.get('/user', function(req, res, next) {
   });
 });
 
-router.get('/register', function(req, res) {
-
-});
-
-router.post('/register', function(req, res) {
-  User.register(new User({
-    username: req.body.username, email: req.body.email}),
-    req.body.password, function(err, user) {
-      if (err) {
-        console.error(err);
-      }
-      passport.authenticate('local')(req, res, function() {
-        res.redirect('/#/');
-      });
-  });
-});
-
-router.get('/login', function(req, res) {
-
-});
-
-router.post('/login', passport.authenticate('local'), function(req, res) {
+var logout = function(req, res){
+  if (req.isAuthenticated()){
+    req.logout();
+  }
   res.redirect('/');
-});
+};
+router.get('/logout', logout);
 
 module.exports = router;
