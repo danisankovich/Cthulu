@@ -11,8 +11,6 @@ to install nodemon         |
 > npm install -g nodemon   |
 ---------------------------
 
-to compile SCSS into CSS, open a second tab in terminal and
->gulp
 
 gulp will watch for changes in the SCSS and JS files and compile as you build
 
