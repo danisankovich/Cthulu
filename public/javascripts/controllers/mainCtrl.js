@@ -1,6 +1,5 @@
 app.controller('mainCtrl', function($scope, $state, $http, userService){
   $(document).ready(function() {
-
     userService.getCurrentUser().success(function(data) {
       $scope.currentUser = data;
     });
