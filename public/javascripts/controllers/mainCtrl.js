@@ -31,7 +31,6 @@ app.controller('mainCtrl', function($scope, $state, $http, userService){
     $scope.closeLogin = function() {
       $('#loginModal').foundation('reveal', 'close');
     }
-
     $scope.loginModal = function() {
       $('#loginModal').foundation('reveal', 'open');
     }

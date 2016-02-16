@@ -6,10 +6,6 @@ clone the repo
 
 >npm install
 
-to launch a server on port 3000
->nodemon
-or
->npm start
 ---------------------------
 to install nodemon         |
 > npm install -g nodemon   |
@@ -18,12 +14,14 @@ to install nodemon         |
 to compile SCSS into CSS, open a second tab in terminal and
 >gulp
 
-gulp will watch for changes in the SCSS file and compile as you build
+gulp will watch for changes in the SCSS and JS files and compile as you build
 
 ---------------------------
 to install gulp            |
 > npm install -g gulp      |
 ---------------------------
+
+Make sure you have an instance of MongoDB running, then run gulp to fire up the server
 
 Foundation Docs: http://foundation.zurb.com/docs/
 SweetAlert Docs: http://oitozero.github.io/ngSweetAlert/#/home
