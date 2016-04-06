@@ -1,16 +1,16 @@
-app.controller('mainCtrl', function($scope, $state, $http, userService){
+app.controller('mainCtrl', function($scope, $rootScope, $state, $http, userService){
   $(document).ready(function() {
     userService.getCurrentUser().success(function(data) {
-      $scope.currentUser = data;
+      $rootScope.currentUser = data;
     });
     $scope.login = function(user) {
       $http.post('/users/login', user).success(function(user){
-        $scope.currentUser = user;
+        $rootScope.currentUser = user;
         $('#loginModal').foundation('reveal', 'close');
       }).error(function(err) {
-        $scope.loginMessage = "Incorrect Username/Password Combination"
-      })
-    }
+        $scope.loginMessage = "Incorrect Username/Password Combination";
+      });
+    };
     $scope.register = function(newUser) {
       $scope.newUser = newUser;
       $http.post('/users/register', $scope.newUser).success(function(err, data) {
@@ -23,16 +23,19 @@ app.controller('mainCtrl', function($scope, $state, $http, userService){
           return;
         }
         else {
-          $scope.currentUser = err;
+          $rootScope.currentUser = user;
           $('#loginModal').foundation('reveal', 'close');
         }
       });
     };
     $scope.closeLogin = function() {
       $('#loginModal').foundation('reveal', 'close');
-    }
+    };
     $scope.loginModal = function() {
       $('#loginModal').foundation('reveal', 'open');
-    }
+    };
+    $scope.toState= function(state) {
+      $state.go('state', {state: state});
+    };
   });
 });

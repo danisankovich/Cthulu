@@ -11,7 +11,6 @@ router.post('/register', function(req, res) {
   req.body.password, function(err, user) {
     if (err) { res.send(err); }
     passport.authenticate('local')(req, res, function() {
-      console.log(req.user)
       res.send(req.user);
     });
   });
@@ -20,8 +19,7 @@ router.post('/register', function(req, res) {
 router.post('/login', passport.authenticate('local'), function(req, res, next) {
   req.session.save(function (err, user) {
     if (err) { res.send(err); }
-    console.log(req.user)
-    res.send(req.user)
+    res.send(req.user);
   });
 });
 

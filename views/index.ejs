@@ -19,9 +19,9 @@
 
     <section class="top-bar-section">
       <ul class="nav navbar-nav navbar-right right">
-        <li ng-show="currentUser"><a ui-sref="state1">state1</a></li>
-        <li ng-show="currentUser"><a ui-sref="state2">state2</a></li>
-        <li ng-show="currentUser"><a ui-sref="state3">state3</a></li>
+        <li ng-show="currentUser"><a ng-click="toState('1')">state1</a></li>
+        <li ng-show="currentUser"><a ng-click="toState('2')">state2</a></li>
+        <li ng-show="currentUser"><a ng-click="toState('3')">state3</a></li>
         <li ng-show="currentUser"><a href='/logout'>Logout <span class="glyphicon glyphicon-log-in"></span></a></li>
         <li ng-hide="currentUser"><a data-reveal-id="loginModal">Login/Register</a></li>
       </ul>

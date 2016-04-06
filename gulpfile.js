@@ -24,7 +24,7 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('js', function() {
-  gulp.src(["public/javascripts/config.js", "public/javascripts/controllers/mainCtrl.js", "public/javascripts/services/service.js"])
+  gulp.src(["public/javascripts/config.js", "public/javascripts/controllers/*.js", "public/javascripts/services/*.js"])
   .pipe(concat("bundle.js"))
   .pipe(uglify({mangle: false}))
   .pipe(gulp.dest("public/dist/"));
@@ -35,11 +35,7 @@ gulp.task('watch', function () {
     gulp.watch('public/javascripts/controllers/*.js', ['js']);
     gulp.watch('public/javascripts/services/*.js', ['js']);
 });
-// gulp.task('watch', function () {
-//     return watch('public/stylesheets/style.scss', function() {
-//           gulp.start('styles', 'reload');
-//         });
-// });
+
 gulp.task("nodemon", function() { nodemon(); });
 
 gulp.task('default', ['nodemon', 'js', 'styles', 'watch']);
